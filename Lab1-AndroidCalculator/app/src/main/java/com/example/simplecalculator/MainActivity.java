@@ -143,11 +143,11 @@ public class MainActivity extends AppCompatActivity {
                 if (txt.isEmpty()) return;
 
                 double second = Double.parseDouble(txt);
-                double result = calculate(firstValue, second, pendingOp);
+                double result = CalcUtils.calculate(firstValue, second, pendingOp);
                 if (Double.isNaN(result)) {
                     display.setText("Cannot Divide by 0");//incase divide by 0
                 } else {
-                    display.setText(trim(result));
+                    display.setText(CalcUtils.trim(result));
                 }
                 firstValue = null;
                 pendingOp = null;
@@ -163,23 +163,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-    private double calculate(double a, double b, String op) {
-        switch (op) {
-            case "+": return a + b;
-            case "−": // fallthrough
-            case "-": return a - b;
-            case "×": // fallthrough
-            case "*": return a * b;
-            case "÷": // fallthrough
-            case "/": return b == 0 ? Double.NaN : a / b;
-            default:  return 0;
-        }
-    }
-
-    private String trim(double x) {
-        long lx = (long) x;
-        return (x == lx) ? Long.toString(lx) : Double.toString(x);
     }
 
 }
