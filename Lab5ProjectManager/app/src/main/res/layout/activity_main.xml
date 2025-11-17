@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Avatar (flag) -->
+    <ImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sports Team Manager"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imageAvatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Team Name input -->
+    <EditText
+        android:id="@+id/editTeamName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Please enter a team name"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="32dp" />
+
+    <!-- Team Name label -->
+    <TextView
+        android:id="@+id/textTeamNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Name"
+        app:layout_constraintTop_toBottomOf="@id/editTeamName"
+        app:layout_constraintStart_toStartOf="@id/editTeamName"
+        android:layout_marginTop="4dp" />
+
+    <!-- Postal code input -->
+    <EditText
+        android:id="@+id/editPostalCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Please enter a postal code"
+        android:inputType="textPostalAddress"
+        app:layout_constraintTop_toBottomOf="@id/textTeamNameLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp" />
+
+    <!-- Postal code label -->
+    <TextView
+        android:id="@+id/textPostalCodeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Address"
+        app:layout_constraintTop_toBottomOf="@id/editPostalCode"
+        app:layout_constraintStart_toStartOf="@id/editPostalCode"
+        android:layout_marginTop="4dp" />
+
+    <!-- Button to open Google Maps -->
+    <Button
+        android:id="@+id/buttonOpenMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPEN IN GOOGLE MAPS"
+        app:layout_constraintTop_toBottomOf="@id/textPostalCodeLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
