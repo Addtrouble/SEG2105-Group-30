@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Link Java variables to XML views
         imageAvatar = findViewById(R.id.imageAvatar);
         imageAvatar.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
@@ -38,10 +37,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnOpenInGoogleMaps(View view) {
-        // Just to confirm the click is wired up
         Toast.makeText(this, "Opening location…", Toast.LENGTH_SHORT).show();
 
-        // Get the postal code from the EditText
         String postalCode = editPostalCode.getText().toString().trim();
 
         if (postalCode.isEmpty()) {
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // 1) Try to open the Google Maps app directly using geo: URI
         Uri geoUri = Uri.parse("geo:0,0?q=" + Uri.encode(postalCode));
         Intent mapsAppIntent = new Intent(Intent.ACTION_VIEW, geoUri);
         mapsAppIntent.setPackage("com.google.android.apps.maps");
@@ -59,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // 2) Fallback: open Google Maps in a browser
         Uri webUri = Uri.parse(
                 "https://www.google.com/maps/search/?api=1&query=" + Uri.encode(postalCode)
         );
@@ -68,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         if (webIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(webIntent);
         } else {
-            // 3) Nothing can handle either intent
             Toast.makeText(this,
                     "No app found to open maps or browser.",
                     Toast.LENGTH_LONG).show();

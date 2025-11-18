@@ -14,7 +14,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
     }
 
-    // Called when any flag ImageView is tapped
     public void SetTeamIcon(View view) {
         int id = view.getId();
         int avatarResId = 0;
@@ -39,12 +38,11 @@ public class ProfileActivity extends AppCompatActivity {
             avatarResId = R.drawable.flag_of_the_united_states;
         }
 
-        // build return intent only if we matched something
         if (avatarResId != 0) {
             Intent returnIntent = new Intent();
             returnIntent.putExtra("avatarResId", avatarResId);
             setResult(RESULT_OK, returnIntent);
-            finish();   // close ProfileActivity and go back to MainActivity
+            finish();
         }
     }
 }
