@@ -1,11 +1,10 @@
 package com.example.lab5_projectmanager;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -13,26 +12,39 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        // set up click listeners for each flag
-        setupAvatarClick(R.id.avatarFlag1, R.drawable.flag_of_australia);
-        setupAvatarClick(R.id.avatarFlag2, R.drawable.flag_of_brazil);
-        setupAvatarClick(R.id.avatarFlag3, R.drawable.flag_of_canada);
-        setupAvatarClick(R.id.avatarFlag4, R.drawable.flag_of_china);
-        setupAvatarClick(R.id.avatarFlag5, R.drawable.flag_of_portugal);
-        setupAvatarClick(R.id.avatarFlag6, R.drawable.flag_of_russia);
-        setupAvatarClick(R.id.avatarFlag7, R.drawable.flag_of_saudi_arabia);
-        setupAvatarClick(R.id.avatarFlag8, R.drawable.flag_of_the_democratic_republic_of_the_congo);
-        setupAvatarClick(R.id.avatarFlag9, R.drawable.flag_of_the_united_states);
     }
 
-    private void setupAvatarClick(int viewId, int drawableResId) {
-        ImageView img = findViewById(viewId);
-        img.setOnClickListener(v -> {
-            Intent result = new Intent();
-            result.putExtra("avatarResId", drawableResId);
-            setResult(Activity.RESULT_OK, result);
-            finish();   // go back to MainActivity
-        });
+    // Called when any flag ImageView is tapped
+    public void SetTeamIcon(View view) {
+        int id = view.getId();
+        int avatarResId = 0;
+
+        if (id == R.id.avatar_australia) {
+            avatarResId = R.drawable.flag_of_australia;
+        } else if (id == R.id.avatar_brazil) {
+            avatarResId = R.drawable.flag_of_brazil;
+        } else if (id == R.id.avatar_canada) {
+            avatarResId = R.drawable.flag_of_canada;
+        } else if (id == R.id.avatar_china) {
+            avatarResId = R.drawable.flag_of_china;
+        } else if (id == R.id.avatar_portugal) {
+            avatarResId = R.drawable.flag_of_portugal;
+        } else if (id == R.id.avatar_russia) {
+            avatarResId = R.drawable.flag_of_russia;
+        } else if (id == R.id.avatar_saudi_arabia) {
+            avatarResId = R.drawable.flag_of_saudi_arabia;
+        } else if (id == R.id.avatar_dr_congo) {
+            avatarResId = R.drawable.flag_of_the_democratic_republic_of_the_congo;
+        } else if (id == R.id.avatar_united_states) {
+            avatarResId = R.drawable.flag_of_the_united_states;
+        }
+
+        // build return intent only if we matched something
+        if (avatarResId != 0) {
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("avatarResId", avatarResId);
+            setResult(RESULT_OK, returnIntent);
+            finish();   // close ProfileActivity and go back to MainActivity
+        }
     }
 }

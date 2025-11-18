@@ -18,82 +18,101 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"/>
 
-    <!-- Grid of flags -->
-    <GridLayout
-        android:id="@+id/gridAvatars"
-        android:layout_width="wrap_content"
+    <!-- 3x3 grid of flags -->
+    <TableLayout
+        android:id="@+id/tableAvatars"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="3"
+        android:stretchColumns="*"
         app:layout_constraintTop_toBottomOf="@id/textSelectAvatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp">
 
-        <!-- 9 ImageViews – replace drawables with your actual names -->
-        <ImageView
-            android:id="@+id/avatarFlag1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_australia"
-            android:padding="8dp"/>
+        <!-- Row 1 -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
-        <ImageView
-            android:id="@+id/avatarFlag2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_brazil"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_canada"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_canada"
+                android:onClick="SetTeamIcon"/>
 
-        <ImageView
-            android:id="@+id/avatarFlag3"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_canada"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_china"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_china"
+                android:onClick="SetTeamIcon"/>
 
-        <ImageView
-            android:id="@+id/avatarFlag4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_china"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_australia"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_australia"
+                android:onClick="SetTeamIcon"/>
+        </TableRow>
 
-        <ImageView
-            android:id="@+id/avatarFlag5"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_portugal"
-            android:padding="8dp"/>
+        <!-- Row 2 -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
-        <ImageView
-            android:id="@+id/avatarFlag6"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_russia"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_brazil"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_brazil"
+                android:onClick="SetTeamIcon"/>
 
-        <ImageView
-            android:id="@+id/avatarFlag7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_saudi_arabia"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_dr_congo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_the_democratic_republic_of_the_congo"
+                android:onClick="SetTeamIcon"/>
 
-        <ImageView
-            android:id="@+id/avatarFlag8"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_the_democratic_republic_of_the_congo"
-            android:padding="8dp"/>
+            <ImageView
+                android:id="@+id/avatar_russia"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_russia"
+                android:onClick="SetTeamIcon"/>
+        </TableRow>
 
-        <ImageView
-            android:id="@+id/avatarFlag9"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/flag_of_the_united_states"
-            android:padding="8dp"/>
+        <!-- Row 3 -->
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
-    </GridLayout>
+            <ImageView
+                android:id="@+id/avatar_saudi_arabia"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_saudi_arabia"
+                android:onClick="SetTeamIcon"/>
+
+            <ImageView
+                android:id="@+id/avatar_portugal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_portugal"
+                android:onClick="SetTeamIcon"/>
+
+            <ImageView
+                android:id="@+id/avatar_united_states"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/flag_of_the_united_states"
+                android:onClick="SetTeamIcon"/>
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

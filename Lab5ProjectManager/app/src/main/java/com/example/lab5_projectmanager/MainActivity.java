@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
         editPostalCode = findViewById(R.id.editPostalCode);
         buttonOpenMaps = findViewById(R.id.buttonOpenMaps);
 
-        // We’ll add onClick logic later
+        buttonOpenMaps.setOnClickListener(this::OnOpenInGoogleMaps);
     }
 
     public void OnOpenInGoogleMaps(View view) {
+        // Just to confirm the click is wired up
+        Toast.makeText(this, "Opening location…", Toast.LENGTH_SHORT).show();
+
         // Get the postal code from the EditText
         String postalCode = editPostalCode.getText().toString().trim();
 
@@ -45,16 +49,29 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Build a URI for a Google Maps search
-        Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/search/?api=1&query="
-                + Uri.encode(postalCode));
+        // 1) Try to open the Google Maps app directly using geo: URI
+        Uri geoUri = Uri.parse("geo:0,0?q=" + Uri.encode(postalCode));
+        Intent mapsAppIntent = new Intent(Intent.ACTION_VIEW, geoUri);
+        mapsAppIntent.setPackage("com.google.android.apps.maps");
 
-        // Create an intent to view this URI
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        if (mapsAppIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapsAppIntent);
+            return;
+        }
 
-        // Start the activity if there is an app that can handle it
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
+        // 2) Fallback: open Google Maps in a browser
+        Uri webUri = Uri.parse(
+                "https://www.google.com/maps/search/?api=1&query=" + Uri.encode(postalCode)
+        );
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, webUri);
+
+        if (webIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(webIntent);
+        } else {
+            // 3) Nothing can handle either intent
+            Toast.makeText(this,
+                    "No app found to open maps or browser.",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
