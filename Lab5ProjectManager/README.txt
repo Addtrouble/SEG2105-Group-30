@@ -3,3 +3,5 @@ Wafi Choudhury 300356024, Mihai Jalbu 300361372, Adam Mourad 300401438
 
 This folder contains the working Lab 5 application that allows the user to write a team name, their postal code, and to select a flag to represent them. 
 The user can also show the team address on google maps using a postal code.
+
+Online resources used: https://developer.android.com/studio/write/layout-editor, chatGPT
